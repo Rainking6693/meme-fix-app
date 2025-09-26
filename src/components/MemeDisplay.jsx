@@ -1,27 +1,90 @@
+import { useState } from 'react'
+
 function MemeDisplay({ caption, imageUrl }) {
+  const [copied, setCopied] = useState(false)
+  
   const handleDownload = () => {
     const link = document.createElement('a')
     link.href = imageUrl
-    link.download = 'meme.jpg'
+    link.download = 'crylesmemes-meme.jpg'
     link.target = '_blank'
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
   }
 
+  const handleShareToX = () => {
+    const shareText = `${caption}\n\nTurned my bad spending into a meme with CryLessMemes! 🤣`
+    const shareUrl = window.location.origin
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`
+    window.open(twitterUrl, '_blank', 'width=550,height=420')
+  }
+  
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(imageUrl)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch (err) {
+      console.error('Failed to copy:', err)
+    }
+  }
+
   return (
-    <div className="meme-display">
-      <div className="meme-caption">
-        {caption}
+    <div className="meme-display-container">
+      <div className="quote-bubble">
+        <span className="quote-icon">💬</span>
+        <p className="meme-caption-text">{caption}</p>
       </div>
-      <img 
-        src={imageUrl} 
-        alt="Generated meme" 
-        className="meme-image"
-      />
-      <button onClick={handleDownload} className="download-button">
-        Download Meme
-      </button>
+      
+      <div className="meme-card">
+        <img 
+          src={imageUrl} 
+          alt="Generated meme" 
+          className="meme-image"
+        />
+        
+        <div className="meme-actions">
+          <button 
+            onClick={handleDownload} 
+            className="action-button download-btn"
+            aria-label="Download meme"
+          >
+            <span className="btn-icon">⬇️</span>
+            <span>Download Meme</span>
+          </button>
+          
+          <button 
+            onClick={handleShareToX} 
+            className="action-button share-btn"
+            aria-label="Share to X/Twitter"
+          >
+            <span className="btn-icon">🔗</span>
+            <span>Share to X</span>
+          </button>
+        </div>
+        
+        <button 
+          onClick={handleCopyLink}
+          className={`copy-link-btn ${copied ? 'copied' : ''}`}
+        >
+          {copied ? (
+            <>
+              <span className="copy-icon">✅</span>
+              <span>Link Copied!</span>
+            </>
+          ) : (
+            <>
+              <span className="copy-icon">📋</span>
+              <span>Copy Link</span>
+            </>
+          )}
+        </button>
+      </div>
+      
+      <div className="success-message">
+        <p>🎉 Your meme is ready to make everyone forget about your spending habits!</p>
+      </div>
     </div>
   )
 }
