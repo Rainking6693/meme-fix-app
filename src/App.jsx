@@ -79,7 +79,8 @@ function App() {
       <div className="app-card">
         <header className="app-header">
           <h1 className="app-title">
-            <span className="emoji-bounce">🤣</span> CryLessMemes
+            <span className="emoji-bounce">🤣</span>
+            <span>CryLessMemes</span>
           </h1>
           <p className="app-tagline">
             Turn your bad spending into memes worth sharing.
