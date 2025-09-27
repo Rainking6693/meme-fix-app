@@ -664,3 +664,214 @@ body {
     padding: 25px 15px;
   }
 }
+
+/* Sticky Top Banner Styles */
+.sticky-top-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 12px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.sticky-top-banner .banner-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.sticky-top-banner .banner-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.sticky-top-banner .banner-headline {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sticky-top-banner .banner-subline {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.95;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sticky-top-banner .banner-cta {
+  background: white;
+  color: #2575fc;
+  padding: 10px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sticky-top-banner .banner-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  background: #f8f9ff;
+}
+
+.sticky-top-banner .banner-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sticky-top-banner .banner-close:hover {
+  opacity: 1;
+}
+
+/* Adjust main content when banner is present */
+.app-container.with-banner {
+  padding-top: 80px;
+}
+
+/* Footer Banner Styles */
+.footer-banner {
+  background: #f9f9f9;
+  padding: 30px 20px;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 60px;
+}
+
+.footer-banner-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.footer-banner-text {
+  font-size: 16px;
+  color: #374151;
+  margin: 0;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.footer-banner-cta {
+  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 3px 12px rgba(106, 17, 203, 0.3);
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.footer-banner-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(106, 17, 203, 0.4);
+}
+
+/* Mobile Responsiveness for Banners */
+@media (max-width: 768px) {
+  .sticky-top-banner {
+    padding: 10px 15px;
+  }
+  
+  .sticky-top-banner .banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .sticky-top-banner .banner-headline {
+    font-size: 16px;
+  }
+  
+  .sticky-top-banner .banner-subline {
+    font-size: 13px;
+  }
+  
+  .sticky-top-banner .banner-cta {
+    font-size: 14px;
+    padding: 9px 20px;
+  }
+  
+  .sticky-top-banner .banner-close {
+    top: 8px;
+    right: 10px;
+    font-size: 24px;
+  }
+  
+  .footer-banner {
+    padding: 25px 15px;
+  }
+  
+  .footer-banner-content {
+    gap: 15px;
+  }
+  
+  .footer-banner-text {
+    font-size: 14px;
+  }
+  
+  .footer-banner-cta {
+    font-size: 14px;
+    padding: 10px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sticky-top-banner .banner-headline {
+    font-size: 15px;
+  }
+  
+  .sticky-top-banner .banner-subline {
+    font-size: 12px;
+  }
+}

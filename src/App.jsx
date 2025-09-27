@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import MemeForm from './components/MemeForm'
 import MemeDisplay from './components/MemeDisplay'
+import StickyTopBanner from './components/StickyTopBanner'
+import FooterBanner from './components/FooterBanner'
 
 function App() {
   const [memeData, setMemeData] = useState(null)
@@ -71,46 +73,50 @@ function App() {
   )
 
   return (
-    <div className="app-container">
-      <div className="animated-bg"></div>
-      
-      {showConfetti && <Confetti />}
-      
-      <div className="app-card">
-        <header className="app-header">
-          <h1 className="app-title">
-            <span className="emoji-bounce">🤣</span>
-            <span>CryLessMemes</span>
-          </h1>
-          <p className="app-tagline">
-            Turn your bad spending into memes worth sharing.
-          </p>
-        </header>
+    <>
+      <StickyTopBanner />
+      <div className="app-container with-banner">
+        <div className="animated-bg"></div>
         
-        <MemeForm onSubmit={handleGenerateMeme} loading={loading} />
+        {showConfetti && <Confetti />}
         
-        {error && (
-          <div className="error-message">
-            <span className="error-icon">😅</span>
-            <p>{error}</p>
-          </div>
-        )}
-        
-        {loading && <SkeletonLoader />}
-        
-        {memeData && !loading && (
-          <MemeDisplay 
-            caption={memeData.caption} 
-            imageUrl={memeData.url}
-            showConfetti={showConfetti}
-          />
-        )}
-        
-        <footer className="app-footer">
-          <p>Made with 💜 and questionable financial decisions</p>
-        </footer>
+        <div className="app-card">
+          <header className="app-header">
+            <h1 className="app-title">
+              <span className="emoji-bounce">🤣</span>
+              <span>CryLessMemes</span>
+            </h1>
+            <p className="app-tagline">
+              Turn your bad spending into memes worth sharing.
+            </p>
+          </header>
+          
+          <MemeForm onSubmit={handleGenerateMeme} loading={loading} />
+          
+          {error && (
+            <div className="error-message">
+              <span className="error-icon">😅</span>
+              <p>{error}</p>
+            </div>
+          )}
+          
+          {loading && <SkeletonLoader />}
+          
+          {memeData && !loading && (
+            <MemeDisplay 
+              caption={memeData.caption} 
+              imageUrl={memeData.url}
+              showConfetti={showConfetti}
+            />
+          )}
+          
+          <footer className="app-footer">
+            <p>Made with 💜 and questionable financial decisions</p>
+          </footer>
+        </div>
       </div>
-    </div>
+      <FooterBanner />
+    </>
   )
 }
 
