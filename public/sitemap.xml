@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://crylessmemes.com/</loc>
+    <lastmod>2025-01-20T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <mobile:mobile/>
+    <image:image>
+      <image:loc>https://crylessmemes.com/og-image.jpg</image:loc>
+      <image:title>CryLessMemes - AI Meme Generator</image:title>
+      <image:caption>Turn your bad spending into viral memes with AI</image:caption>
+    </image:image>
+  </url>
+
+  <!-- About Page (if exists) -->
+  <url>
+    <loc>https://crylessmemes.com/about</loc>
+    <lastmod>2025-01-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Privacy Policy (if exists) -->
+  <url>
+    <loc>https://crylessmemes.com/privacy</loc>
+    <lastmod>2025-01-20T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Terms of Service (if exists) -->
+  <url>
+    <loc>https://crylessmemes.com/terms</loc>
+    <lastmod>2025-01-20T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Contact Page (if exists) -->
+  <url>
+    <loc>https://crylessmemes.com/contact</loc>
+    <lastmod>2025-01-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- FAQ Page (if exists) -->
+  <url>
+    <loc>https://crylessmemes.com/faq</loc>
+    <lastmod>2025-01-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <mobile:mobile/>
+  </url>
+
+  <!-- Blog/Examples Page (if exists) -->
+  <url>
+    <loc>https://crylessmemes.com/examples</loc>
+    <lastmod>2025-01-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile/>
+  </url>
+
+</urlset>

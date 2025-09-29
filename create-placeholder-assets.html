@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Placeholder Assets for CryLessMemes</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .asset { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        canvas { border: 1px solid #ddd; margin: 10px; }
+        button { padding: 10px 20px; margin: 5px; background: #6366f1; color: white; border: none; cursor: pointer; }
+        button:hover { background: #5855eb; }
+    </style>
+</head>
+<body>
+    <h1>CryLessMemes Placeholder Asset Generator</h1>
+    <p>This tool creates placeholder assets for the SEO implementation. Click the buttons to generate and download the assets.</p>
+
+    <div class="asset">
+        <h3>PWA Icons</h3>
+        <canvas id="icon192" width="192" height="192"></canvas>
+        <canvas id="icon512" width="512" height="512"></canvas>
+        <br>
+        <button onclick="createIcon(192)">Create 192x192 Icon</button>
+        <button onclick="createIcon(512)">Create 512x512 Icon</button>
+        <button onclick="downloadIcon(192)">Download 192x192</button>
+        <button onclick="downloadIcon(512)">Download 512x512</button>
+    </div>
+
+    <div class="asset">
+        <h3>Open Graph Image</h3>
+        <canvas id="ogImage" width="1200" height="630"></canvas>
+        <br>
+        <button onclick="createOGImage()">Create OG Image</button>
+        <button onclick="downloadOGImage()">Download OG Image</button>
+    </div>
+
+    <div class="asset">
+        <h3>Apple Touch Icon</h3>
+        <canvas id="appleIcon" width="180" height="180"></canvas>
+        <br>
+        <button onclick="createAppleIcon()">Create Apple Icon</button>
+        <button onclick="downloadAppleIcon()">Download Apple Icon</button>
+    </div>
+
+    <script>
+        function createIcon(size) {
+            const canvas = document.getElementById(`icon${size}`);
+            const ctx = canvas.getContext('2d');
+            
+            // Background
+            ctx.fillStyle = '#6366f1';
+            ctx.fillRect(0, 0, size, size);
+            
+            // Emoji
+            ctx.font = `${size * 0.4}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🤣', size / 2, size / 2);
+            
+            // Text
+            ctx.fillStyle = 'white';
+            ctx.font = `bold ${size * 0.08}px Arial`;
+            ctx.fillText('CryLessMemes', size / 2, size * 0.85);
+        }
+
+        function createOGImage() {
+            const canvas = document.getElementById('ogImage');
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+            gradient.addColorStop(0, '#6366f1');
+            gradient.addColorStop(1, '#8b5cf6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1200, 630);
+            
+            // Title
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 72px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('CryLessMemes', 600, 200);
+            
+            // Emoji
+            ctx.font = '120px Arial';
+            ctx.fillText('🤣💸', 600, 320);
+            
+            // Tagline
+            ctx.font = '36px Arial';
+            ctx.fillText('Turn Your Bad Spending Into Viral Memes', 600, 450);
+            
+            // Subtitle
+            ctx.font = '24px Arial';
+            ctx.fillStyle = '#e5e7eb';
+            ctx.fillText('AI-Powered Meme Generator', 600, 500);
+        }
+
+        function createAppleIcon() {
+            const canvas = document.getElementById('appleIcon');
+            const ctx = canvas.getContext('2d');
+            
+            // Background with rounded corners effect
+            ctx.fillStyle = '#6366f1';
+            ctx.fillRect(0, 0, 180, 180);
+            
+            // Emoji
+            ctx.font = '72px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('🤣', 90, 90);
+            
+            // Text
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 14px Arial';
+            ctx.fillText('CryLessMemes', 90, 150);
+        }
+
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        function downloadIcon(size) {
+            const canvas = document.getElementById(`icon${size}`);
+            downloadCanvas(canvas, `icon-${size}.png`);
+        }
+
+        function downloadOGImage() {
+            const canvas = document.getElementById('ogImage');
+            downloadCanvas(canvas, 'og-image.jpg');
+        }
+
+        function downloadAppleIcon() {
+            const canvas = document.getElementById('appleIcon');
+            downloadCanvas(canvas, 'apple-touch-icon.png');
+        }
+
+        // Auto-generate on load
+        window.onload = function() {
+            createIcon(192);
+            createIcon(512);
+            createOGImage();
+            createAppleIcon();
+        };
+    </script>
+</body>
+</html>

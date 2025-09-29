@@ -3,18 +3,24 @@ import MemeForm from './components/MemeForm'
 import MemeDisplay from './components/MemeDisplay'
 import StickyTopBanner from './components/StickyTopBanner'
 import FooterBanner from './components/FooterBanner'
+import SEO from './components/SEO'
+import StructuredData from './components/StructuredData'
+import SocialShare from './components/SocialShare'
+import Analytics from './components/Analytics'
 
 function App() {
   const [memeData, setMemeData] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [showConfetti, setShowConfetti] = useState(false)
+  const [currentExpense, setCurrentExpense] = useState('')
 
   const handleGenerateMeme = async (expense) => {
     setLoading(true)
     setError(null)
     setMemeData(null)
     setShowConfetti(false)
+    setCurrentExpense(expense)
 
     try {
       const response = await fetch('/api/generateMeme', {
@@ -74,6 +80,22 @@ function App() {
 
   return (
     <>
+      {/* SEO Meta Tags */}
+      <SEO 
+        memeData={memeData}
+        url={window.location.href}
+      />
+      
+      {/* Structured Data */}
+      <StructuredData 
+        type={memeData ? 'meme' : 'homepage'}
+        memeData={memeData}
+        expense={currentExpense}
+      />
+      
+      {/* Analytics */}
+      <Analytics measurementId="G-XXXXXXXXXX" />
+      
       <StickyTopBanner />
       <div className="app-container with-banner">
         <div className="animated-bg"></div>
@@ -103,11 +125,20 @@ function App() {
           {loading && <SkeletonLoader />}
           
           {memeData && !loading && (
-            <MemeDisplay 
-              caption={memeData.caption} 
-              imageUrl={memeData.url}
-              showConfetti={showConfetti}
-            />
+            <>
+              <MemeDisplay 
+                caption={memeData.caption} 
+                imageUrl={memeData.url}
+                showConfetti={showConfetti}
+              />
+              
+              {/* Enhanced Social Sharing */}
+              <SocialShare 
+                memeData={memeData}
+                expense={currentExpense}
+                memeUrl={window.location.href}
+              />
+            </>
           )}
           
           <footer className="app-footer">
